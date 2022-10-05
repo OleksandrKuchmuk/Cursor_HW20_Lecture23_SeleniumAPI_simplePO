@@ -10,5 +10,4 @@ public class CatalogPage extends BasePage{
     public void clickOnLaptopsAndComputersButton(){
         laptopsAndComputersButton.click();
     }
-
 }
