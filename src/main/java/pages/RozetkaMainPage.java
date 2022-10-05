@@ -13,6 +13,10 @@ public class RozetkaMainPage extends BasePage{
     @FindBy(xpath = "//button[contains(text(), 'Знайти')]")
     private WebElement searchButton;
 
+    @FindBy(xpath = "//button[@class='header__button ng-star-inserted header__button--active']")
+    private WebElement BasketButtonOnMainPage;
+
+
     public void clickOnCatalogBtn() {
         catalogButton.click();
     }
