@@ -1,47 +1,40 @@
 package pages;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class RozetkaMainPage extends BasePage{
-    @FindBy(xpath = "//button[@id='fat-menu']")
-    private WebElement catalogButton;
+public class RozetkaMainPage extends BasePage {
+    private static final Logger LOGGER = LogManager.getLogger(RozetkaMainPage.class);
 
-    @FindBy(xpath = "//input[@name='search']")
+    @FindBy(xpath = "//input")
     private WebElement searchBar;
 
     @FindBy(xpath = "//button[contains(text(), 'Знайти')]")
     private WebElement searchButton;
 
-    @FindBy(xpath = "//button[@class='header__button ng-star-inserted header__button--active']")
-    private WebElement BasketButtonOnMainPage;
-
-
-    public void clickOnCatalogBtn() {
-        catalogButton.click();
-    }
-
-    public void clickOnSearchBar() {
+    public RozetkaMainPage clickOnSearchBar() {
+        LOGGER.info("Click on SearchBar");
         searchBar.click();
+        return this;
     }
 
-    public void clearSearchBar(){
+    public RozetkaMainPage clearSearchBar() {
+        LOGGER.info("Clear SearchBar");
         searchBar.clear();
+        return this;
     }
 
-    public void inputQueryToSearchBar(String text){
+    public RozetkaMainPage inputQueryToSearchBar(String text) {
+        LOGGER.info("Send query '" + text + "' to searchBar");
         searchBar.sendKeys(text);
+        return this;
     }
 
-    public void pushSearchButton(){
-searchButton.click();
+    public RozetkaMainPage pushSearchButton() {
+        LOGGER.info("Click on search button and go to AllLaptopPage");
+        searchButton.click();
+        return this;
     }
-
-
-
-
-
-
-
-
 }

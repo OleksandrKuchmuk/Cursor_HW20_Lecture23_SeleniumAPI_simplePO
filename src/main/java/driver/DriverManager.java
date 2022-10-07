@@ -4,19 +4,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import util.PropertyReader;
 
-import java.util.concurrent.TimeUnit;
+import java.time.Duration;
 
 public class DriverManager {
     private static WebDriver driver;
 
-    public static void createDriver(){
+    public static void createDriver() {
         System.setProperty(PropertyReader.getValue("name"), PropertyReader.getValue("driverPath"));
         driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(Integer.parseInt(PropertyReader.getValue("timeout")), TimeUnit.MILLISECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofMillis(Long.parseLong(PropertyReader.getValue("timeout"))));
         driver.manage().window().maximize();
     }
 
-    public static WebDriver getDriver(){
+    public static WebDriver getDriver() {
         return driver;
     }
 }
